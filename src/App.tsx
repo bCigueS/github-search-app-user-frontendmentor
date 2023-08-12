@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './sass/App.scss';
 import './sass/variables.scss';
 import './sass/reset.scss';
 
-import SearchBar from './components/SearchBar';
+import SearchBar, { fetchUser } from './components/SearchBar';
 import Layout from './Layout/Layout';
 import Header from './components/Header';
 import ProfilContent from './components/ProfilContent';
@@ -27,9 +27,20 @@ function App() {
 	const [user, setUser] = useState<githubUser | null>(null);
 
 	const onSaveUser = (user: githubUser | null) => {
-		console.log("App-user: ", user);
 		setUser(user);
 	};
+
+	const getDefaultUser = async () => {
+		const defaultUser = await fetchUser('Octocat');
+		if (defaultUser) {
+			setUser(defaultUser);
+		}
+	}
+
+	useEffect(() => {
+		getDefaultUser();
+	}, []);
+
 	return (
 		<Layout>
 			<div className='main-layout'>

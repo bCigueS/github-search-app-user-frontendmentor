@@ -22,7 +22,6 @@ interface githubUser {
 }
 
 const ProfilContent: React.FC<{ user: githubUser | null }> = ({ user }) => {
-
 	return (
 		<>
 			<div className='profil-wrapper'>
@@ -41,7 +40,7 @@ const ProfilContent: React.FC<{ user: githubUser | null }> = ({ user }) => {
 							{user?.joinDate}
 						</p>
 					</div>
-					<p className='profil-info__description'>
+					<p className={'profil-info__description' + (user?.description === 'This profile as no bio' ? ' unvailable' : '')}>
 						{user?.description}
 					</p>
 				</div>
@@ -60,45 +59,42 @@ const ProfilContent: React.FC<{ user: githubUser | null }> = ({ user }) => {
 					</div>
 				</div>
 				<div className='profil-links'>
-					<div className='profil-links__info'>
+					<div
+						className={
+							'profil-links__info' +
+							(user?.town === 'Not Available'
+								? ' unvailable'
+								: '')
+						}
+					>
 						<img src={iconLocation} alt='' />
-						<p
-							className={
-								user?.town === 'Not Available'
-									? 'profil-info__links__info--unvailable'
-									: ''
-							}
-						>
-							{user?.town}
-						</p>
+						<p>{user?.town}</p>
 					</div>
 					<div className='profil-links__info'>
 						<img src={iconWebsite} alt='' />
 						<a href={user?.link}>{user?.link.slice(8)}</a>
 					</div>
-					<div className='profil-links__info'>
+					<div
+						className={
+							'profil-links__info' +
+							(user?.town === 'Not Available'
+								? ' unvailable'
+								: '')
+						}
+					>
 						<img src={iconTwitter} alt='' />
-						<p
-							className={
-								user?.town === 'Not Available'
-									? 'profil-links__info--unvailable'
-									: ''
-							}
-						>
-							{user?.twitter}
-						</p>
+						<p>{user?.twitter}</p>
 					</div>
-					<div className='profil-links__info'>
+					<div
+						className={
+							'profil-links__info' +
+							(user?.agency === 'Not Available'
+								? ' unvailable'
+								: '')
+						}
+					>
 						<img src={iconCompagny} alt='' />
-						<p
-							className={
-								user?.town === 'Not Available'
-									? 'profil-links__info--unvailable'
-									: ''
-							}
-						>
-							{user?.agency}
-						</p>
+						<p>{user?.agency}</p>
 					</div>
 				</div>
 			</div>

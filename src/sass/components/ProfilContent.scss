@@ -121,12 +121,10 @@
 			display: flex;
 			gap: 20px;
 
-			&--unvailable {
-				@include themify() {
-					color: themed('notAvailable');
-				}
-			}
 		}
+	}
+	.unvailable {
+		opacity: 50%;
 	}
 }
 
