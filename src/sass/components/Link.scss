@@ -1,0 +1,23 @@
+@import '../variables.scss';
+
+.link {
+	height: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	@include themify() {
+		color: themed('buttonColor');
+	}
+
+	&:hover {
+		@include themify() {
+			color: themed('buttonColorHover');
+		}	
+	}
+
+	i {
+		font-size: 20px;
+		margin-right: 16px;
+	}
+}

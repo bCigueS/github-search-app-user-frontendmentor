@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+$background-color: #F6F8FF;
+$deep-blue-light: #0079FF;
+$grey-light: #697C9A;
+$grey-blue-light: #4B6A9B;
+$black-light: #2b3442;
+$white-light: #FEFEFE;
+$black-ligth: #222731;
+
+$deep-blue-dark: #0079FF;
+$white-dark: #FFFFFF;
+$darkest-blue-dark: #141D2F;
+$dark-background: #1E2A47;
+$greyish-dark: #90A4D4;
+
+$font-familly: 'Space Mono', monospace;
+
+@mixin h1-mixin() {
+	font-size: 26px;
+	font-weight: bold;
+	line-height: 38px;
+}
+
+@mixin h2-mixin() {
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 33px;
+}
+
+@mixin h3-mixin() {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+@mixin h4-mixin() {
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+@mixin body-mixin() {
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 25px;
+}
+
+
+$themes: (
+	light: (
+		backgroundColor: $background-color,
+		inputBackground: $white-light,
+		colorText: $black-light,
+		placeholderColor: $grey-blue-light,
+		buttonColor: $grey-blue-light,
+		buttonColorHover: $black-ligth,
+		notAvailable: $grey-blue-light,
+
+	),
+	dark: (
+		backgroundColor: $dark-background,
+		inputBackground: $darkest-blue-dark,
+		colorText: $white-dark,
+		placeholderColor: $white-dark,
+		buttonColor: $white-dark,
+		buttonColorHover: $greyish-dark,
+		notAvailable: $grey-light,
+
+
+	),
+);
+			
+@mixin themify() {
+	@each $theme, $map in $themes {
+	  .theme--#{$theme} & {
+		$theme-map: () !global;
+		@each $key, $submap in $map {
+		  $value: map-get(map-get($themes, $theme), '#{$key}');
+		  $theme-map: map-merge(
+			$theme-map,
+			  (
+				$key: $value,
+			  )
+			) !global;
+		  }
+		  @content;
+		  $theme-map: null !global;
+		}
+	 }
+  }
+
+  @function themed($key) {
+	@return map-get($theme-map, $key);
+  }
+

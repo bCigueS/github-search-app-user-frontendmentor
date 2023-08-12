@@ -1,0 +1,40 @@
+@import './variables.scss';
+
+.main-layout {
+	height: 100%;
+	width: 100%;
+	display: flex;	
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@include themify() {
+		background-color: themed('backgroundColor');
+	}
+
+	.main-wrapper {
+		width: 720px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		@include themify() {
+			color: themed('colorText');
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.main-layout {
+		.main-wrapper {
+			width: 573px;
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.main-layout {
+		.main-wrapper {
+			width: 327px;
+		}
+	}
+}

@@ -1,0 +1,263 @@
+@import '../variables.scss';
+
+.profil-wrapper {
+	width: 100%;
+	height: 100%;
+
+	padding: 48px;
+	border-radius: 15px;
+
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 16px 30px -10px rgba(0,0,0,0.19);
+
+
+	@include themify() {
+		background-color: themed('inputBackground');
+	}
+
+	.profil-info {
+		p {
+			@include themify() {
+				color: themed('textColor');
+			}
+		}
+		display: grid;
+		grid-template-columns: 117px 1fr;
+		grid-template-rows: 117px 1fr;
+
+		&__picture {
+			max-width: 117px;
+			max-height: 117px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			}
+		}
+
+		&__user {
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr;
+			justify-self: flex-end;
+			width: 480px;
+			&--login {
+				color: $deep-blue-light;
+			}
+			&--date {
+				justify-self: flex-end;
+			}
+		}
+
+		&__description {
+			justify-self: flex-end;
+			width: 480px;
+			grid-column: 2 / 3;
+		}
+	}
+
+	&__login {
+		color: $deep-blue-light;
+	}
+	&__description {
+		margin-top: 20px;
+		margin-bottom: 32px;
+		@include themify() {
+			color: themed('buttonColor');
+		}
+	}
+
+	.profil-stats {
+		margin-top: 32px;
+		height: 85px;
+		width: 480px;
+		align-self: flex-end;
+		border-radius: 10px;
+		padding: 15px 32px;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 90px;
+		margin-bottom: 37px;
+		@include themify() {
+			background-color: themed('backgroundColor');
+		}
+	}
+	.profil-links {
+		display: grid;
+		width: 480px;
+		grid-auto-flow: column	;
+
+		align-self: flex-end;
+		gap: 19px;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+
+		a {
+			cursor: pointer;
+
+			text-decoration: none;
+			@include themify() {
+				color: themed('buttonColor');
+			}
+		}
+
+		a:hover {
+			text-decoration: underline;
+			@include themify() {
+				color: themed('buttonColorHover');
+			}
+		}
+		img {
+			height: 100%;
+		}
+
+		&__info {
+			display: flex;
+			gap: 20px;
+
+			&--unvailable {
+				@include themify() {
+					color: themed('notAvailable');
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.profil-wrapper {
+		.profil-info {
+			row-gap: 24px;
+			&__user {
+				width: 335px;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr 1fr;
+
+				&--date {
+					justify-self: flex-start;
+				}
+			}
+			&__description {
+				width: 335px;
+				justify-self: flex-start;
+				grid-column: 1 / 3;
+			}
+		}
+
+		.profil-stats {
+			width: 100%;
+		}
+
+		.profil-links {
+			width: 100%;
+
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.profil-wrapper {
+		padding: 32px 24px;
+		.profil-info {
+			grid-template-columns: 70px 1fr;
+			grid-template-rows: 70px 1fr;
+			&__picture {
+				max-width: 70px;
+				max-height: 70px;
+			}
+
+			row-gap: 24px;
+			&__user {
+				h1 {
+					font-size: 16px;
+					line-height: normal;
+				}
+				width: 190px;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr 1fr;
+
+				&--date {
+					justify-self: flex-start;
+				}
+			}
+			&__description {
+				width: 190px;
+				justify-self: flex-start;
+				grid-column: 1 / 3;
+			}
+		}
+
+		.profil-stats {
+			width: 100%;
+			padding: 15px 18px;
+			justify-content: space-between;
+			gap: 1px;
+		}
+
+		.profil-links {
+			width: 100%;
+
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr;
+			align-self: flex-start;
+		}
+	}
+}
+
+// .profil-wrapper {
+// 	width: 100%;
+// 	height: 100%;
+
+// 	padding: 48px;
+// 	border-radius: 15px;
+
+// 	display: flex;
+// 	flex-direction: column;
+
+// 	@include themify() {
+// 		background-color: themed('inputBackground');
+// 	}
+
+// 	.profil-info {
+// 		p {
+// 			@include themify() {
+// 				color: themed('textColor');
+// 			}
+// 		}
+// 		display: grid;
+// 		grid-template-columns: 117px 1fr;
+// 		grid-template-rows: 117px 1fr;
+// 		row-gap: 24px; LUIiiiiiiiiiiiiiiiiiiiiiiiii
+
+// 		&__picture {
+// 			max-width: 117px;
+// 			max-height: 117px;
+
+// 			img {
+// 				width: 100%;
+// 				height: 100%;
+// 				border-radius: 50%;
+// 			}
+// 		}
+
+// 		&__user {
+// 			justify-self: flex-end;
+// 			width: 335px;
+// 			&--login {
+// 				color: $deep-blue-light;
+// 			}
+// 		}
+
+//		CA!!
+// 		&__description {
+// 			grid-column: 1 / 3;
+// 		}
+
+// 	}
+// }

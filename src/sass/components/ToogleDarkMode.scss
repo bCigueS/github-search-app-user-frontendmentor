@@ -1,0 +1,27 @@
+@import '../variables.scss';
+
+.toogle-mode {
+	height: 20px;
+	display: flex;
+	flex-direction: row;
+	// justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+
+
+	@include themify() {
+		color: themed('buttonColor');
+	}
+
+	&:hover {
+		@include themify() {
+			color: themed('buttonColorHover');
+		}	
+	}
+
+	i {
+		font-size: 20px;
+		margin-left: 16px;
+	}
+}
+
